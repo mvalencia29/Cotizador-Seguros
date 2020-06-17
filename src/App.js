@@ -1,9 +1,22 @@
-import React from 'react';
-import Topbar from './components/Topbar'
+import React, { Fragment } from "react";
+import styled from "styled-components";
+import Topbar from "./components/Topbar";
+import Formulario from "./components/Formulario";
+
+const ContenedorFormulario = styled.div`
+  justify-content: center;
+  display: flex;
+  align-content: center;
+`;
 
 function App() {
   return (
-    <Topbar />
+    <Fragment>
+      <Topbar />
+      <ContenedorFormulario>
+        <Formulario />
+      </ContenedorFormulario>
+    </Fragment>
   );
 }
 

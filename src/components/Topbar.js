@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Navbar } from "react-bootstrap";
 
 const Header = styled(Navbar)`
-  background-color: #0651ad;
+  background-color: #007bff!important;
   justify-content: center;
   display: flex;
 `;
