@@ -1,8 +1,9 @@
 import React from 'react';
+import Topbar from './components/Topbar'
 
 function App() {
   return (
-    <div>Cotizador</div>
+    <Topbar />
   );
 }
 
