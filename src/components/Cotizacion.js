@@ -41,7 +41,7 @@ const Cotizacion = ({ dataCotiza }) => {
         <p>Plan : {plan}</p>
         <p>
           <strong>Cotizacion : </strong>
-          {cotizacion}
+          $ {cotizacion}
         </p>
         <Button
           variant="primary"
