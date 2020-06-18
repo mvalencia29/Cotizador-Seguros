@@ -41,7 +41,7 @@ const Formulario = ({ data }) => {
     });
   };
 
-  const { setDataCotizacion, setLoading } = data; 
+  const { setDataCotizacion, setLoading, done, loading } = data; 
 
   const handleClick = () => {
     if (marca.trim() === "" || year.trim() === "" || plan.trim() === "") {
@@ -70,7 +70,8 @@ const Formulario = ({ data }) => {
           cotizacion: resultadoBase,
           done: true
         });
-      }, 6000);
+      }, 2000);
+
     }
   };
 
@@ -80,6 +81,8 @@ const Formulario = ({ data }) => {
 
   const vertical = "top";
   const horizontal = "center";
+
+  if(done || loading)return null;
 
   return (
     <Fragment>

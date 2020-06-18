@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import styled from "styled-components";
 
 const Formu = styled(Form)`
@@ -17,21 +17,21 @@ const TextCotizacion = styled.h4`
   margin-bottom: 25px;
 `;
 
-const Cotizacion = () => {
+const Cotizacion = ({ dataCotizacion }) => {
+  const { done } = dataCotizacion;
+  if (!done) return null;
   return (
     <Fragment>
       <Formu>
         <TextCotizacion>Cotizacion</TextCotizacion>
-        <p>Marca</p>
-        <p>Marca</p>
-        <p>Marca</p>
-        <p>Marca</p>
-        <Button
-          variant="primary"
-          type="button"
-          style={{ width: "100%" }}
-        >
-          Cotizar
+        <p>Marca : Americano</p>
+        <p>Año : 2010</p>
+        <p>Plan : Basico</p>
+        <p>
+          <strong>Cotizacion : </strong>Americano
+        </p>
+        <Button variant="primary" type="button" style={{ width: "100%" }}>
+          Ok
         </Button>
       </Formu>
     </Fragment>

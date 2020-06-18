@@ -21,17 +21,15 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+  const { done } = dataCotizacion;
+
   return (
     <Fragment>
       <Topbar />
       <ContenedorFormulario>
-        {loading ? (
-          <Cotizacion />
-        ) : (
-          <Formulario data={{ setDataCotizacion, setLoading }} />
-        )}
-        {<Cotizacion />}
-        {<Loading />}
+        <Formulario data={{ setDataCotizacion, setLoading, done, loading  }}  />
+        <Cotizacion dataCotizacion={dataCotizacion}  />
+        <Loading loading={loading} />
       </ContenedorFormulario>
     </Fragment>
   );
