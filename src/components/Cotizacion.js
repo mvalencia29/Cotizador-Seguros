@@ -17,20 +17,38 @@ const TextCotizacion = styled.h4`
   margin-bottom: 25px;
 `;
 
-const Cotizacion = ({ dataCotizacion }) => {
-  const { done } = dataCotizacion;
+const Cotizacion = ({ dataCotiza }) => {
+  const { dataCotizacion, setDataCotizacion } = dataCotiza;
+  const { done, cotizacion, data } = dataCotizacion;
+  const { marca, year, plan } = data;
+
+  const handleClick = () => {
+    setDataCotizacion({
+      data: {},
+      cotizacion: "",
+      done: false,
+    });
+  };
+
   if (!done) return null;
+
   return (
     <Fragment>
       <Formu>
         <TextCotizacion>Cotizacion</TextCotizacion>
-        <p>Marca : Americano</p>
-        <p>Año : 2010</p>
-        <p>Plan : Basico</p>
+        <p>Marca : {marca}</p>
+        <p>Año : {year}</p>
+        <p>Plan : {plan}</p>
         <p>
-          <strong>Cotizacion : </strong>Americano
+          <strong>Cotizacion : </strong>
+          {cotizacion}
         </p>
-        <Button variant="primary" type="button" style={{ width: "100%" }}>
+        <Button
+          variant="primary"
+          type="button"
+          style={{ width: "100%" }}
+          onClick={handleClick}
+        >
           Ok
         </Button>
       </Formu>

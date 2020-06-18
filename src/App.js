@@ -28,7 +28,7 @@ function App() {
       <Topbar />
       <ContenedorFormulario>
         <Formulario data={{ setDataCotizacion, setLoading, done, loading  }}  />
-        <Cotizacion dataCotizacion={dataCotizacion}  />
+        <Cotizacion dataCotiza={{dataCotizacion, setDataCotizacion}}  />
         <Loading loading={loading} />
       </ContenedorFormulario>
     </Fragment>
