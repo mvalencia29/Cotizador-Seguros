@@ -3,6 +3,11 @@ import { Form, Button, Col } from "react-bootstrap";
 import styled from "styled-components";
 import MuiAlert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
+import {
+  obtenerDiferenciaYear,
+  calcularMarca,
+  calcularTipoSeguro,
+} from "../helper";
 
 const Formu = styled(Form)`
   width: 500px;
@@ -39,6 +44,21 @@ const Formulario = () => {
   const handleClick = () => {
     if (marca.trim() === "" || year.trim() === "" || plan.trim() === "") {
       setError(true);
+    } else {
+      //Base de 2000
+      let resultadoBase = 2000;
+      // Obtener diferencia de años
+      const diferenciaYear = obtenerDiferenciaYear(year);
+      console.log(resultadoBase);
+      // Por cada año hay que restar el 3%
+      resultadoBase -= (diferenciaYear * 3 * resultadoBase) / 100;
+      console.log(resultadoBase);
+      // Calcular segun la marca
+      resultadoBase = calcularMarca(marca) * resultadoBase;
+      console.log(resultadoBase);
+      // Calcular segun el plan
+      resultadoBase = calcularTipoSeguro(plan) * resultadoBase;
+      console.log(resultadoBase);
     }
   };
 
@@ -111,7 +131,12 @@ const Formulario = () => {
           Cotizar
         </Button>
       </Formu>
-      <Snackbar anchorOrigin={{ vertical, horizontal }} open={error} autoHideDuration={1200} onClose={handleCloseError}>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={error}
+        autoHideDuration={1200}
+        onClose={handleCloseError}
+      >
         <Alert onClose={handleCloseError} severity="error">
           Por favor completar los campos
         </Alert>
