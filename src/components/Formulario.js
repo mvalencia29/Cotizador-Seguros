@@ -23,7 +23,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const Formulario = () => {
+const Formulario = ({ data }) => {
   const [dataForm, setDataForm] = useState({
     marca: "",
     year: "",
@@ -41,6 +41,8 @@ const Formulario = () => {
     });
   };
 
+  const { setDataCotizacion, setLoading } = data; 
+
   const handleClick = () => {
     if (marca.trim() === "" || year.trim() === "" || plan.trim() === "") {
       setError(true);
@@ -49,16 +51,26 @@ const Formulario = () => {
       let resultadoBase = 2000;
       // Obtener diferencia de años
       const diferenciaYear = obtenerDiferenciaYear(year);
-      console.log(resultadoBase);
+
       // Por cada año hay que restar el 3%
       resultadoBase -= (diferenciaYear * 3 * resultadoBase) / 100;
-      console.log(resultadoBase);
+
       // Calcular segun la marca
       resultadoBase = calcularMarca(marca) * resultadoBase;
-      console.log(resultadoBase);
+
       // Calcular segun el plan
-      resultadoBase = calcularTipoSeguro(plan) * resultadoBase;
-      console.log(resultadoBase);
+      resultadoBase = parseFloat(calcularTipoSeguro(plan) * resultadoBase);
+
+      setLoading(true);
+      
+      setTimeout(() => {
+        setLoading(false);
+        setDataCotizacion({
+          data: { marca, year, plan },
+          cotizacion: resultadoBase,
+          done: true
+        });
+      }, 6000);
     }
   };
 
